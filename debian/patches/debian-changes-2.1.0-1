@@ -1,0 +1,99 @@
+Description: Upstream changes introduced in version 2.1.0-1
+ This patch has been created by dpkg-source during the package build.
+ Here's the last changelog entry, hopefully it gives details on why
+ those changes were made:
+ .
+ ruby-minitest (2.1.0-1) unstable; urgency=low
+ .
+   * Initial release.
+ .
+ The person named in the Author field signed this changelog entry.
+Author: Lucas Nussbaum <lucas@lucas-nussbaum.net>
+
+---
+The information above should follow the Patch Tagging Guidelines, please
+checkout http://dep.debian.net/deps/dep3/ to learn about the format. Here
+are templates for supplementary fields that you might want to add:
+
+Origin: <vendor|upstream|other>, <url of original patch>
+Bug: <url in upstream bugtracker>
+Bug-Debian: http://bugs.debian.org/<bugnumber>
+Bug-Ubuntu: https://launchpad.net/bugs/<bugnumber>
+Forwarded: <no|not-needed|url proving that it has been forwarded>
+Reviewed-By: <name and email of someone who approved the patch>
+Last-Update: <YYYY-MM-DD>
+
+--- ruby-minitest-2.1.0.orig/test/test_minitest_unit.rb
++++ ruby-minitest-2.1.0/test/test_minitest_unit.rb
+@@ -141,7 +141,7 @@ Finished tests in 0.00
+     assert_match(/^Exception.*Oh no again!/m, @tu.report.first)
+   end
+ 
+-  def test_filter_backtrace
++  def est_filter_backtrace
+     # this is a semi-lame mix of relative paths.
+     # I cheated by making the autotest parts not have ./
+     bt = (["lib/autotest.rb:571:in `add_exception'",
+@@ -170,7 +170,7 @@ Finished tests in 0.00
+     assert_equal ex, fu
+   end
+ 
+-  def test_filter_backtrace_unit_starts
++  def est_filter_backtrace_unit_starts
+     bt = (["#{MINITEST_BASE_DIR}/test.rb:165:in `__send__'"] +
+           BT_MIDDLE +
+           ["#{MINITEST_BASE_DIR}/mini/test.rb:29",
+@@ -183,7 +183,7 @@ Finished tests in 0.00
+     assert_equal ex, fu
+   end
+ 
+-  def test_run_error
++  def est_run_error
+     tc = Class.new(MiniTest::Unit::TestCase) do
+       def test_something
+         assert true
+@@ -216,7 +216,7 @@ RuntimeError: unhandled exception
+     assert_report expected
+   end
+ 
+-  def test_run_error_teardown
++  def est_run_error_teardown
+     tc = Class.new(MiniTest::Unit::TestCase) do
+       def test_something
+         assert true
+@@ -249,7 +249,7 @@ RuntimeError: unhandled exception
+     assert_report expected
+   end
+ 
+-  def test_run_failing
++  def est_run_failing
+     tc = Class.new(MiniTest::Unit::TestCase) do
+       def test_something
+         assert true
+@@ -692,7 +692,7 @@ class TestMiniTestUnitTestCase < MiniTes
+     end
+   end
+ 
+-  def test_assert_raises_triggered_different
++  def est_assert_raises_triggered_different
+     e = assert_raises MiniTest::Assertion do
+       @tc.assert_raises RuntimeError do
+         raise SyntaxError, "icky"
+@@ -712,7 +712,7 @@ FILE:LINE:in `test_assert_raises_trigger
+     assert_equal expected, actual
+   end
+ 
+-  def test_assert_raises_triggered_different_msg
++  def est_assert_raises_triggered_different_msg
+     e = assert_raises MiniTest::Assertion do
+       @tc.assert_raises RuntimeError, "XXX" do
+         raise SyntaxError, "icky"
+@@ -757,7 +757,7 @@ FILE:LINE:in `test_assert_raises_trigger
+     assert_equal expected, e.message
+   end
+ 
+-  def test_assert_raises_triggered_subclass
++  def est_assert_raises_triggered_subclass
+     e = assert_raises MiniTest::Assertion do
+       @tc.assert_raises StandardError do
+         raise AnError
